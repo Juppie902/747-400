@@ -634,10 +634,10 @@ function B747_apu()
 
 	elseif B747DR_elec_apu_sel_pos == 2 then
         if simDR_apu_running == 0 then
-			if B747DR_elec_apu_inlet_door_pos > 0.95 then
+			if B747DR_elec_apu_inlet_door_pos > 0.45 then
+                run_after_time(B747_apu_selector_return_spring, 1.5)
 				B747_apu_start = 1
 				simDR_apu_start_switch_mode = 2                 -- START
-				run_after_time(B747_apu_selector_return_spring, 6.0)  				-- SHOULD RETURN THE APU SELECTOR SW TO RUN AFTER START, YMMV
 			end
 
         elseif simDR_apu_running == 1 then
@@ -805,7 +805,7 @@ function B747_electrical_EICAS_msg()
 
     -- APU DOOR
     
-    if (B747DR_elec_apu_inlet_door_pos > 0.95 and simDR_apu_running == 0)
+    if (B747DR_elec_apu_inlet_door_pos > 0.85 and simDR_apu_running == 0)
         or
         (B747DR_elec_apu_inlet_door_pos < 0.05 and simDR_apu_running == 1)
     then
