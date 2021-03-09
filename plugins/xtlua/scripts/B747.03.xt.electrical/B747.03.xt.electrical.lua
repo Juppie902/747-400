@@ -622,22 +622,22 @@ function B747_apu()
                     run_after_time(B747_apu_shutdown, 60.0)
                 end
             end
-		elseif simDR_apu_running == 0 then			-- BASICALLY IF YOU TURN IT ON AND OFF BEFORE IT STARTS, IT SHOULD CLOSE THE INLET DOOR
+		elseif simDR_apu_running == 0 then					-- BASICALLY IF YOU TURN IT ON AND OFF BEFORE IT STARTS, IT SHOULD CLOSE THE INLET DOOR
 			B747_apu_shutdown()
         end
 
 
 	elseif B747DR_elec_apu_sel_pos == 1 then
-		if simDR_battery_on[0] == 1 then		-- ONLY OPEN INLET DOOR IF BAT ON
+		if simDR_battery_on[0] == 1 then				-- ONLY OPEN INLET DOOR IF BAT ON
 			B747_apu_inlet_door_target_pos = 1.0
 		end
 
 	elseif B747DR_elec_apu_sel_pos == 2 then
         if simDR_apu_running == 0 then
-			if B747DR_elec_apu_inlet_door_pos > 0.95 then
+			if B747DR_elec_apu_inlet_door_pos > 0.35 then
 				B747_apu_start = 1
 				simDR_apu_start_switch_mode = 2                 -- START
-				run_after_time(B747_apu_selector_return_spring, 6.0)  				-- SHOULD RETURN THE APU SELECTOR SW TO RUN AFTER START, YMMV
+				run_after_time(B747_apu_selector_return_spring, 1.0)  				-- SHOULD RETURN THE APU SELECTOR SW TO RUN AFTER START, YMMV
 			end
 
         elseif simDR_apu_running == 1 then
